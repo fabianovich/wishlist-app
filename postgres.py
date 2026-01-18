@@ -28,6 +28,11 @@ def get_new_id():
     return new_id
 
 
+def sign_in(name, password_hash):
+    cursor.execute(f"select id from people where name = {name}")
+    id = cursor.fetchone()[0]
+
+
 # end functions
 
 new_user("Erica Kirk")
