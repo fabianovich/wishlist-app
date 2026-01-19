@@ -37,6 +37,11 @@ def sign_in(name, password):
     password_hash = cursor.fetchone()[0]
     if bcrypt.checkpw(password, password_hash):
         print("match!!")
+        login_success = True
+    else:
+        login_success = False
+
+    return login_success
 
 
 # end functions
