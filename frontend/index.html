@@ -7,9 +7,24 @@
         <h1>header</h1>
     </header>
     <main>
-        <input type="text" id="name" />
-        <input type="text" id="password" />
-        <button onclick="api()">send</button>
+        <div>
+            <h3>log in</h3>
+            <label>name</label>
+            <input type="text" id="login-name" /> <br>
+            <label>password</label>
+            <input type="password" id="login-password" /> <br>
+            <button onclick="login()">send</button>
+            <p id="login-output"></p>
+        </div>
+        <div>
+            <h3>sign up</h3>
+            <label>name</label>
+            <input type="text" id="signup-name" /> <br>
+            <label>password</label>
+            <input type="password" id="signup-password" /> <br>
+            <button onclick="signup()">send</button>
+            <p id="signup-output"></p>
+        </div>
     </main>
 
     <script src="script.js"></script>

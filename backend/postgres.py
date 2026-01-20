@@ -21,7 +21,7 @@ cursor = db_connection.cursor()
 def new_user(name, password):
     id = get_new_id()
     password_hash = bcrypt.hashpw(password, bcrypt.gensalt())
-    cursor.execute(f"insert into people values ({id}, '{name}', {password_hash})")
+    cursor.execute(f"insert into people (id, name, password) values ({id}, '{name}', {password_hash})")
     db_connection.commit()
 
 
@@ -42,6 +42,10 @@ def sign_in(name, password):
         login_success = False
 
     return login_success
+
+def session_token_to_db(session_token):
+    cursor.execute(f"insert into people (session_token) values ('{session_token}')")
+    db_connection.commit()
 
 
 # end functions
