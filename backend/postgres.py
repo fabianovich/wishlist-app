@@ -20,7 +20,8 @@ cursor = db_connection.cursor()
 
 def new_user(name, password):
     id = get_new_id()
-    password_hash = bcrypt.hashpw(password, bcrypt.gensalt())
+    bytes = password.encode('utf-8')
+    password_hash = bcrypt.hashpw(bytes, bcrypt.gensalt())
     cursor.execute(f"insert into people (id, name, password) values ({id}, '{name}', {password_hash})")
     db_connection.commit()
 
@@ -35,7 +36,8 @@ def get_new_id():
 def sign_in(name, password):
     cursor.execute(f"select password_hash from people where name = {name}")
     password_hash = cursor.fetchone()[0]
-    if bcrypt.checkpw(password, password_hash):
+    bytes = password.encode('utf-8')
+    if bcrypt.checkpw(bytes, password_hash):
         print("match!!")
         login_success = True
     else:
