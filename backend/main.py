@@ -1,12 +1,11 @@
 import random
 import string
 
+# import uvicorn
+import postgres
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import uvicorn
-
-import postgres
 
 string_length = 20
 characters = string.ascii_letters + string.digits
@@ -55,6 +54,7 @@ def signup(data: SignUp):
 @app.get("/wishlist")
 def wishlist():
     return
+
 
 # if __name__ == "__main__":
 #     uvicorn.run("main:app", host="localhost", port=8000, reload=True)
